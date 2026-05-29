@@ -10,3 +10,14 @@ services:
     container_name: zoomdrive-backend
     ports:
       - "5000:5000"
+
+  nginx:
+    image: nginx:latest
+    container_name: zoomdrive-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
